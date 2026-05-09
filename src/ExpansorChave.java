@@ -3,11 +3,8 @@ public class ExpansorChave {
 
     private Chave[] keySchedule = new Chave[11];
 
-    public ExpansorChave(Chave chave) {
+    public Chave[] expandirChave(Chave chave) {
         keySchedule[0] = chave;
-    }
-
-    public void expandirChave() {
         throw new UnsupportedOperationException();
     }
 

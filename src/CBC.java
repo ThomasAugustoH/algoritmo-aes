@@ -1,4 +1,7 @@
 
+import java.util.ArrayList;
+
+
 public class CBC extends ModoOperacao {
 
     @Override
@@ -10,7 +13,7 @@ public class CBC extends ModoOperacao {
             throw new IllegalArgumentException("Vetor de inicialização não informado!");
         }
 
-        
+
     }
 
     @Override
@@ -21,8 +24,8 @@ public class CBC extends ModoOperacao {
         if (this.vetorInicializacao == null) {
             throw new IllegalArgumentException("Vetor de inicialização não informado!");
         }
+
+        ArrayList<byte[]> blocos = super.dividirBlocos(textoCifrado);
+
     }
-
-
-
 }
