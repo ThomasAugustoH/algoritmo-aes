@@ -1,10 +1,10 @@
-public enum Modo {
+public enum ModoEnum {
     ECB("ECB"),
     CBC("CBC");
 
     private final String valor;
 
-    private Modo(String modo) {
+    private ModoEnum(String modo) {
         this.valor = modo;
     }
 

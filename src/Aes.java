@@ -1,23 +1,8 @@
 
-import java.io.File;
 
 public class Aes {
 
-    public void cifrar(File arquivoSimples, String nomeArquivoSaida, Modo modoOperacao, Chave chave) {
-        throw new UnsupportedOperationException();
-    }
-
-    public void decifrar(File arquivoCifrado, String nomeArquivoSaida, Modo modoOperacao, Chave chave) {
-        throw new UnsupportedOperationException();
-    }
-
-    public void cifrar(String nomeArquivoSimples, String nomeArquivoSaida, Modo modoOperacao, Chave chave) {
-        throw new UnsupportedOperationException();
-    }
-
-    public void decifrar(String arquivoCifrado, String nomeArquivoSaida, Modo modoOperacao, Chave chave) {
-        throw new UnsupportedOperationException();
-    }
+    public final int TAM_BLOCO = 16;
 
     private void addRoundKey() {
         throw new UnsupportedOperationException();
