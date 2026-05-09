@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class ECB extends ModoOperacao {
 
@@ -6,6 +7,8 @@ public class ECB extends ModoOperacao {
         if (this.chave == null) {
             throw new IllegalArgumentException("Chave não informada!");
         }
+
+        ArrayList<byte[]> blocos = super.dividirBlocos(textoCifrado);
     }
 
     @Override
