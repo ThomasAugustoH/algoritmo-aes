@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  assemble:
 
     runs-on: ubuntu-latest
     permissions:
