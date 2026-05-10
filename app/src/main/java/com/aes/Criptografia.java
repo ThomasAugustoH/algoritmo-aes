@@ -1,3 +1,5 @@
+package com.aes;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -7,9 +9,12 @@ public class Criptografia {
 
     public Criptografia(ModoEnum modoOperacao) {
         switch (modoOperacao) {
-            case ModoEnum.ECB -> operador = new ECB();
-            case ModoEnum.CBC -> operador = new CBC();
-            default -> throw new IllegalArgumentException("Modo de operação não encontrado.");
+            case ModoEnum.ECB ->
+                operador = new ECB();
+            case ModoEnum.CBC ->
+                operador = new CBC();
+            default ->
+                throw new IllegalArgumentException("Modo de operação não encontrado.");
         }
     }
 

@@ -1,6 +1,6 @@
+package com.aes;
 
 import java.util.ArrayList;
-
 
 public abstract class ModoOperacao {
 
@@ -28,16 +28,16 @@ public abstract class ModoOperacao {
         int numeroBlocos = (int) Math.ceil(texto.length / aes.TAM_BLOCO);
 
         if (texto.length % aes.TAM_BLOCO == 0) {
-            numeroBlocos++; 
+            numeroBlocos++;
         }
 
         for (int i = 0; i < numeroBlocos; i++) {
             byte[] bloco = new byte[aes.TAM_BLOCO];
             for (int j = 0; j < aes.TAM_BLOCO; j++) {
                 int indiceTexto = aes.TAM_BLOCO * i + j;
-                if (texto.length < indiceTexto)
-                    bloco[j] = texto[indiceTexto];
-                else {
+                if (texto.length < indiceTexto) {
+                    bloco[j] = texto[indiceTexto]; 
+                }else {
                     bloco = padding.preencher(bloco, j);
                     break;
                 }
@@ -47,5 +47,5 @@ public abstract class ModoOperacao {
 
         return blocos;
     }
-    
+
 }

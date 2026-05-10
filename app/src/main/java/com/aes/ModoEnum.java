@@ -1,3 +1,5 @@
+package com.aes;
+
 public enum ModoEnum {
     ECB("ECB"),
     CBC("CBC");
