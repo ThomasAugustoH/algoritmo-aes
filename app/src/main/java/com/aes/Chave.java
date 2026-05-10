@@ -1,7 +1,5 @@
 package com.aes;
 
-import java.util.HexFormat;
-
 public class Chave {
 
     private String chaveString;
@@ -20,12 +18,12 @@ public class Chave {
         int tamChave = chaveString.length();
         int tamChaveLimpa = chaveString.replace(",", "").length();
 
-        if (tamChave - tamChaveLimpa != 16) {
+        if (tamChave - tamChaveLimpa != 15) {
             throw new IllegalArgumentException("Tamanho de chave inválido! Separe 16 valores por vírgula.");
         }
 
         String[] valores = chaveString.split(",");
-        byte[] valoresByte = new byte[tamChave - tamChaveLimpa];
+        byte[] valoresByte = new byte[tamChave - tamChaveLimpa + 1];
 
         for (int i = 0; i < valoresByte.length; i++) {
             int valor = Integer.parseInt(valores[i].trim());
@@ -46,6 +44,7 @@ public class Chave {
             chaveFormatada += (int) chaveBytes[i];
             chaveFormatada += ",";
         }
+        chaveFormatada = chaveFormatada.substring(0, chaveFormatada.length() - 1);
 
         setChave(chaveFormatada);
     }
@@ -71,20 +70,16 @@ public class Chave {
         return palavra;
     }
 
-    public String getMatrizEstado() {
+    public byte[][] getMatrizEstado() {
 
-        String textoFinal = "";
+        byte[][] matrizEstado = new byte[4][4];
 
-        int contador = 0;
-        for (byte b : chaveBytes) {
-            if (contador == 8) {
-                contador = 0;
-                textoFinal += "\n";
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                matrizEstado[j][i] = chaveBytes[i * 4  + j];
             }
-            textoFinal += HexFormat.of().toHexDigits(b).toUpperCase() + " ";
-            contador++;
         }
 
-        return textoFinal;
+        return matrizEstado;
     }
 }
