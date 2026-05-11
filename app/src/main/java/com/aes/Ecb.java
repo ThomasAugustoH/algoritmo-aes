@@ -2,17 +2,15 @@ package com.aes;
 
 import java.util.ArrayList;
 
-public class CBC extends ModoOperacao {
+public class Ecb extends ModoOperacao {
 
     @Override
     public void cifrar(byte[] textoSimples, String nomeArquivoSaida) {
         if (this.chave == null) {
             throw new IllegalArgumentException("Chave não informada!");
         }
-        if (this.vetorInicializacao == null) {
-            throw new IllegalArgumentException("Vetor de inicialização não informado!");
-        }
 
+        ArrayList<byte[]> blocos = super.dividirBlocos(textoCifrado);
     }
 
     @Override
@@ -20,11 +18,7 @@ public class CBC extends ModoOperacao {
         if (this.chave == null) {
             throw new IllegalArgumentException("Chave não informada!");
         }
-        if (this.vetorInicializacao == null) {
-            throw new IllegalArgumentException("Vetor de inicialização não informado!");
-        }
-
-        ArrayList<byte[]> blocos = super.dividirBlocos(textoCifrado);
 
     }
+
 }
