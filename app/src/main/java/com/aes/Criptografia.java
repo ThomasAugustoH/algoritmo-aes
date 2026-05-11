@@ -10,9 +10,9 @@ public class Criptografia {
     public Criptografia(ModoEnum modoOperacao) {
         switch (modoOperacao) {
             case ModoEnum.ECB ->
-                operador = new Ecb();
+                operador = new Ecbb();
             case ModoEnum.CBC ->
-                operador = new Cbc();
+                operador = new Cbcc();
             default ->
                 throw new IllegalArgumentException("Modo de operação não encontrado.");
         }

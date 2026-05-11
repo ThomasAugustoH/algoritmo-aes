@@ -2,7 +2,7 @@ package com.aes;
 
 import java.util.ArrayList;
 
-public class Ecb extends ModoOperacao {
+public class Ecbb extends ModoOperacao {
 
     @Override
     public void cifrar(byte[] textoSimples, String nomeArquivoSaida) {
