@@ -51,6 +51,47 @@ public class ChaveTest {
     }
 
     /*
+        Chave deve ter 4 palavras
+     */
+    @Test
+    void chaveComNumeroInvalidoDePalavras() {
+        byte[][] palavras = {
+            {
+                1, 2, 3, 4
+            },
+            {
+                5, 6, 7, 8
+            },
+            {
+                9, 10, 11, 12
+            }
+        };
+        assertThrows(IllegalArgumentException.class, () -> new Chave(palavras));
+    }
+
+    /*
+        Chave deve ter palavras de 4 bytes
+     */
+    @Test
+    void chaveComPalavrasInvalidas() {
+        byte[][] palavras = {
+            {
+                1, 2, 3, 4
+            },
+            {
+                5, 6, 7, 8
+            },
+            {
+                9, 10, 11, 12
+            },
+            {
+                13, 14, 15, 16, 17
+            }
+        };
+        assertThrows(IllegalArgumentException.class, () -> new Chave(palavras));
+    }
+
+    /*
         Chave válida
      */
     @Test
@@ -63,6 +104,62 @@ public class ChaveTest {
 
         assertDoesNotThrow(() -> new Chave(chave2));
 
+    }
+
+    /*
+        Chave válida formada por palavras
+     */
+    @Test
+    void chaveComEntradaDePalavrasValidas() {
+        byte[][] palavras = {
+            {
+                1, 2, 3, 4
+            },
+            {
+                5, 6, 7, 8
+            },
+            {
+                9, 10, 11, 12
+            },
+            {
+                13, 14, 15, 16
+            }
+        };
+        Chave chave = new Chave(palavras);
+
+        assertArrayEquals(palavras[2], chave.getPalavra(2));
+    }
+
+    /*
+        Validar chaves equivalentes
+     */
+    @Test
+    void chavesEquivalentes() {
+        byte[][] palavras = {
+            {
+                1, 2, 3, 4
+            },
+            {
+                5, 6, 7, 8
+            },
+            {
+                9, 10, 11, 12
+            },
+            {
+                13, 14, 15, 16
+            }
+        };
+        Chave chave1 = new Chave(palavras);
+
+        byte[] bytes = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+        Chave chave2 = new Chave(bytes);
+
+        String string = "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16";
+        Chave chave3 = new Chave(string);
+
+
+        assertArrayEquals(chave1.getMatrizEstado(), chave2.getMatrizEstado());
+        assertArrayEquals(chave1.getMatrizEstado(), chave3.getMatrizEstado());
     }
 
     /*
