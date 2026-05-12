@@ -5,12 +5,45 @@ public class Chave {
     private String chaveString;
     private byte[] chaveBytes;
 
-    public Chave(String chaveString) {
-        setChave(chaveString);
+    public Chave(byte[][] palavras) {
+        setChave(palavras);
     }
 
-    public Chave(byte[] chaveBytes) {
-        setChave(chaveBytes);
+    public Chave(byte[] bytes) {
+        setChave(bytes);
+    }
+
+    public Chave(String string) {
+        setChave(string);
+    }
+
+    private void setChave(byte[][] chavePalavras) {
+        if (chavePalavras.length != 4) {
+            throw new IllegalArgumentException("Forneça 4 palavras para formar a chave!");
+        }
+
+        byte[] bytesChave = new byte[16];
+        for (int i = 0; i < 4; i++) {
+            if (chavePalavras[i].length != 4) {
+                throw new IllegalArgumentException("Palavras devem ter 4 bytes!");
+            }
+
+            System.arraycopy(chavePalavras[i], 0, bytesChave, i * 4, 4);
+        }
+
+        setChave(bytesChave);
+    }
+
+    private void setChave(byte[] chaveBytes) {
+        String chaveFormatada = "";
+
+        for (int i = 0; i < chaveBytes.length; i++) {
+            chaveFormatada += (int) chaveBytes[i];
+            chaveFormatada += ",";
+        }
+        chaveFormatada = chaveFormatada.substring(0, chaveFormatada.length() - 1);
+
+        setChave(chaveFormatada);
     }
 
     private void setChave(String chaveString) {
@@ -35,18 +68,6 @@ public class Chave {
 
         this.chaveString = chaveString;
         this.chaveBytes = valoresByte;
-    }
-
-    private void setChave(byte[] chaveBytes) {
-        String chaveFormatada = "";
-
-        for (int i = 0; i < chaveBytes.length; i++) {
-            chaveFormatada += (int) chaveBytes[i];
-            chaveFormatada += ",";
-        }
-        chaveFormatada = chaveFormatada.substring(0, chaveFormatada.length() - 1);
-
-        setChave(chaveFormatada);
     }
 
     public String getChaveString() {
@@ -76,7 +97,7 @@ public class Chave {
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                matrizEstado[j][i] = chaveBytes[i * 4  + j];
+                matrizEstado[j][i] = chaveBytes[i * 4 + j];
             }
         }
 

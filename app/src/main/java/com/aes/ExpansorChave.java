@@ -9,7 +9,7 @@ public class ExpansorChave {
         throw new UnsupportedOperationException();
     }
 
-    private void rotacionarBytes() {
+    private byte[] rotacionarBytes(int indiceChaveAtual) {
         throw new UnsupportedOperationException();
     }
 
