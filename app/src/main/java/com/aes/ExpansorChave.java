@@ -7,21 +7,23 @@ public class ExpansorChave {
     public Chave[] expandirChave(Chave chave) {
         keySchedule[0] = chave;
         throw new UnsupportedOperationException();
+
+        // return keySchedule;
     }
 
     private byte[] rotacionarBytes(int indiceChaveAtual) {
         throw new UnsupportedOperationException();
     }
 
-    private void substituirBytes() {
+    private byte[] substituirBytes(int indiceChaveAtual) {
         throw new UnsupportedOperationException();
     }
 
-    private void gerarRoundConstant() {
+    private byte[] gerarRoundConstant(int indiceChaveAtual) {
         throw new UnsupportedOperationException();
     }
 
-    private void realizarXor() {
+    private byte[] realizarXor(byte[] palavraA, byte[] palavraB) {
         throw new UnsupportedOperationException();
     }
 }
