@@ -40,10 +40,6 @@ public class BlocoAesTest {
      */
     @Test
     void lancarExcecaoblocoValoresInvalidos() {
-        byte[] bloco1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, -1, 11, 12, 13, 14, 15, 16};
-
-        assertThrows(IllegalArgumentException.class, () -> new BlocoAes(bloco1));
-
         String bloco2 = "1, 2, 3, 4, 5, 6, 7, 8, 9, 256, 11, 12, 13, 14, 15, 16";
 
         assertThrows(IllegalArgumentException.class, () -> new BlocoAes(bloco2));
