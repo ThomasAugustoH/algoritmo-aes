@@ -2,9 +2,9 @@ package com.aes;
 
 public class ExpansorChave {
 
-    private Chave[] keySchedule = new Chave[11];
+    private BlocoAes[] keySchedule = new BlocoAes[11];
 
-    public Chave[] expandirChave(Chave chave) {
+    public BlocoAes[] expandirChave(BlocoAes chave) {
         keySchedule[0] = chave;
         throw new UnsupportedOperationException();
 

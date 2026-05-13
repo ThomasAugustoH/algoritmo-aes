@@ -18,11 +18,11 @@ public class Criptografia {
         }
     }
 
-    public void setChave(Chave chave) {
+    public void setChave(BlocoAes chave) {
         operador.setChave(chave);
     }
 
-    public void setVetorInicializacao(Chave vetorInicializacao) {
+    public void setVetorInicializacao(BlocoAes vetorInicializacao) {
         operador.setVetorInicializacao(vetorInicializacao);
     }
 
