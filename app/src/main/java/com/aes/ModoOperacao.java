@@ -6,8 +6,8 @@ public abstract class ModoOperacao {
 
     protected byte[] textoSimples;
     protected byte[] textoCifrado;
-    protected Chave chave;
-    protected Chave vetorInicializacao;
+    protected BlocoAes chave;
+    protected BlocoAes vetorInicializacao;
     protected Aes aes = new Aes();
     protected Padding padding = new Padding();
 
@@ -15,11 +15,11 @@ public abstract class ModoOperacao {
 
     public abstract void decifrar(byte[] textoCifrado, String nomeArquivoSaida);
 
-    public void setChave(Chave chave) {
+    public void setChave(BlocoAes chave) {
         this.chave = chave;
     }
 
-    public void setVetorInicializacao(Chave vetorInicializacao) {
+    public void setVetorInicializacao(BlocoAes vetorInicializacao) {
         this.vetorInicializacao = vetorInicializacao;
     }
 
