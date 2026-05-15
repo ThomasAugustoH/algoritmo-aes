@@ -98,9 +98,9 @@ public class GerenciadorTabelas {
     };
 
     public byte substituir(byte original, TabelasEnum tabela) {
-        String bytesStr = hexFormat.toHexDigits(original);
-        int linha = Integer.parseInt(bytesStr.substring(0, 0));
-        int coluna = Integer.parseInt(bytesStr.substring(1, 1));
+        int originalEmInt = Byte.toUnsignedInt(original);
+        int linha = originalEmInt / 16;
+        int coluna = originalEmInt % 16;
 
         switch (tabela) {
             case S_BOX -> {
@@ -136,5 +136,30 @@ public class GerenciadorTabelas {
         }
 
         return novaMatriz;
+    }
+
+    public int[][] getTabela(TabelasEnum tabela) {
+        switch (tabela) {
+            case S_BOX -> {
+                return S_BOX;
+            }
+            case INV_S_BOX -> {
+                return INV_S_BOX;
+            }
+            case TABELA_L -> {
+                return TABELA_L;
+            }
+            case TABELA_E -> {
+                return TABELA_E;
+            }
+            case MATRIZ_MULTIPLICACAO -> {
+                return MATRIZ_MULTIPLICACAO;
+            }
+            case INV_MATRIZ_MULTIPLICACAO -> {
+                return INV_MATRIZ_MULTIPLICACAO;
+            }
+            default ->
+                throw new AssertionError();
+        }
     }
 }

@@ -27,8 +27,10 @@ public class ConversorBytes {
             if (matrizEstado[i].length != matrizEstado.length) {
                 throw new IllegalArgumentException("Matriz de Estado deve ter tamanho n x n");
             }
-
-            System.arraycopy(matrizEstado[i], 0, bytes, i * matrizEstado.length, matrizEstado.length);
+            
+            for (int j = 0; j < matrizEstado.length; j++) {
+                bytes[i + j * matrizEstado.length] = matrizEstado[i][j];
+            }
         }
 
         return bytes;
@@ -69,9 +71,7 @@ public class ConversorBytes {
                 throw new IllegalArgumentException("Palavras devem formar uma matriz n x n");
             }
 
-            for (int j = 0; j < palavras.length; j++) {
-                bytes[i] = palavras[i][j];
-            }
+            System.arraycopy(palavras[i], 0, bytes, i * palavras.length, palavras.length);
         }
 
         return bytes;
@@ -82,9 +82,6 @@ public class ConversorBytes {
     }
 
     public byte[][] realizarXor(byte[][] matrizA, byte[][] matrizB) {
-        if (matrizA.length != matrizB.length)
-            throw new IllegalArgumentException("Matrizes devem ter tamanhos iguais!");
-
         byte[][] matrizResultado = new byte[matrizA.length][matrizA.length];
 
         for (int i = 0; i < 4; i++) {
